@@ -7,6 +7,24 @@ body{
     background: #BEFFD5;
     color: #044B25;
 }
+a, a:visited{
+    color: #044B25;
+    text-decoration: none;
+}
+a::after {
+    content: '';
+    width: 0px;
+    height: 3px;
+    display: block;
+    background: #044B25;
+    transition: 300ms;
+}
+.home-title a::after{
+    height: 10px;
+}
+a:hover::after {
+    width: 100%;
+}
 nav a{
     font-size: 30px;
     float:right;
