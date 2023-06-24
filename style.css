@@ -34,3 +34,34 @@ nav{
 .home-container{
     margin: 3%;
 }
+.inference-container{
+    display: flex;
+    width: 60%;
+    gap: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.camera-preview{
+    background-image: url(https://images.unsplash.com/photo-1615182611773-f2fb2e6a6492?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80);
+    background-size: cover;
+    background-position: center;
+}
+.inference-container div{
+    flex-basis: 50%;
+    aspect-ratio: 1;
+    border-radius: 50px;
+}
+.result-information{
+    background: #9FEFBC;
+    padding: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+.result-information h2, .result-information h4{
+    font-size: 30px;
+}
+.result-information h4{
+    font-weight: 300;
+}
