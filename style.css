@@ -10,6 +10,7 @@ body{
 a, a:visited{
     color: #044B25;
     text-decoration: none;
+    cursor: pointer;
 }
 a::after {
     content: '';
@@ -31,9 +32,19 @@ nav a{
 }
 nav :first-child{
     float: left;
+    position: absolute;
+    top:2%;
+    left:2%;
+}
+nav :last-child{
+    position: fixed;
+    top:2%;
+    right:2%;
 }
 nav{
     padding: 2%;
+    padding-bottom: 0;
+    height: 50px;
 }
 .home-title{
     width: 40%;
@@ -102,4 +113,17 @@ nav{
 }
 .detected-information{
     aspect-ratio: auto;
+}
+.mission-container{
+    margin: 3%;
+    font-size: 30px;
+    margin-bottom: 15%;
+}
+.mission-container p{
+    margin-right: 35%;
+}
+.mission-container h1{
+    font-size: 150px;
+    margin-bottom: 0px;
+    margin-top: 400px;
 }
