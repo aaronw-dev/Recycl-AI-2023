@@ -44,11 +44,19 @@ nav{
     transform: translate(-50%, -50%);
 }
 .camera-preview{
-    background-image: url(https://images.unsplash.com/photo-1615182611773-f2fb2e6a6492?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80);
+    background: whitesmoke;
+}
+.camera-preview.bottle{
     background-size: cover;
     background-position: center;
+    background-image: url(https://images.unsplash.com/photo-1615182611773-f2fb2e6a6492?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80);
 }
-.inference-container div{
+.camera-preview.can{
+    background-size: cover;
+    background-position: center;
+    background-image: url(https://unblast.com/wp-content/uploads/2020/03/Soda-Can-in-Hand-Mockup-2.jpg);
+}
+.inference-container > div{
     flex-basis: 50%;
     aspect-ratio: 1;
     border-radius: 50px;
@@ -61,7 +69,19 @@ nav{
 }
 .result-information h2, .result-information h4{
     font-size: 30px;
+    margin-bottom: 0;
+}
+.result-information h3{
+    font-size: 25px;
+    margin: 0;
+    margin-bottom: 20px;
 }
 .result-information h4{
     font-weight: 300;
+}
+.result-information p{
+    margin: 0;
+}
+.detected-information{
+    aspect-ratio: auto;
 }
