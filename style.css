@@ -148,3 +148,11 @@ nav{
     margin-bottom: 0px;
     margin-top: 400px;
 }
+.vshackslogo{
+    fill: #044B25;
+    width: 60px;
+    height: 60px;
+    
+    position: absolute;
+    right: 0;
+}
