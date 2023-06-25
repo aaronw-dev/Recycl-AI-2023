@@ -7,6 +7,27 @@ body{
     background: #BEFFD5;
     color: #044B25;
 }
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #044B25 #beffd5;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 19px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #beffd5;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #044B25;
+    border-radius: 10px;
+    border: 4px solid #beffd5;
+  }
 a, a:visited{
     color: #044B25;
     text-decoration: none;
