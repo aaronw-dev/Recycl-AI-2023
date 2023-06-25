@@ -24,18 +24,19 @@
   <div class="inference-container">
     <div class="camera-preview"></div>
     <div class="result-information">
-      <h2 id="detectedobject">Detected Object: <b>[OBJECT]</b></h4>
-      <h3 id="confidence">Confidence: <b>[CONFIDENCE]</b></h3>
+      <h2>Detected Object: <span id="detectedobject">[OBJECT]</span></h4>
+      <h3>Confidence: <span id="item-confidence">[CONFIDENCE]</span></h3>
       <div class="detected-information">
-        <p>Recycl sees a <b>[ITEM]</b>.</p>
+        <p>Recycl sees a <u id="item-text">[ITEM]</u>.</p>
         <h4>Where can I recycle?</h4>
         <p>Containers can be returned to designated collection facilities (bottle depots) or retailers.</p>
         <h4>What happens to it?</h4>
-        <p> <b>[DETAILS]</b></p>
+        <p> <span id="item-details">[DETAILS]</span></p>
       </div>
     </div>
   </div>
   <script src="script.js"></script>
+  <script src="inference.js"></script>
 </body>
 
 </html>
