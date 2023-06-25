@@ -95,6 +95,15 @@ nav{
 }
 .camera-preview{
     background: whitesmoke;
+    overflow: hidden;
+}
+.camera-preview video, .camera-preview img{
+    height: 100%;
+}
+.camera-preview .button-container{
+    position: absolute;
+    bottom: 0;
+    z-index: 1000;
 }
 .camera-preview.bottle{
     background-size: cover;
@@ -156,4 +165,9 @@ nav{
     position: fixed;
     right: 0;
     bottom: 0;
+}
+.error-container{
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
 }
