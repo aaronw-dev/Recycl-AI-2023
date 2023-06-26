@@ -102,8 +102,29 @@ nav{
 }
 .camera-preview .button-container{
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
+    left: 25%;
+    transform: translateX(-100%);
     z-index: 1000;
+}
+.button-container button{
+    height: 50px;
+    width: 50px;
+    margin:0;
+    padding:0;
+    border:none;
+    background: transparent;
+}
+.button-container svg{
+    height: 100%;
+    fill:#9FEFBC;
+}
+.spinning{
+    /* The animation part: */
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
 .camera-preview.bottle{
     background-size: cover;
@@ -170,4 +191,24 @@ nav{
     font-size: 50px;
     font-weight: 700;
     text-align: center;
+}
+.loading-text{
+    position: absolute;
+    top:50%;
+    left: 25%;
+    transform: translate(-75%, -50%);
+    font-size: 30px;
+    font-weight: 700;
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
 }

@@ -21,32 +21,16 @@
     <a href="/">Recycl.ai</a>
     <a>Recycling Classifier</a>
   </nav>
+  
   <div class="inference-container">
     <div class="camera-preview">
+      <div class="loading-text" id="loading-text">
+        Loading...
+      </div>
       <video id="video" autoplay></video>
       <img id="capturedImage" alt="Captured Image">
       <div class="button-container">
-        <button id="capture">
-          <svg width="444.000000pt" height="417.000000pt" viewBox="0 0 444.000000 417.000000" preserveAspectRatio="xMidYMid meet">
-            <g transform="translate(0.000000,417.000000) scale(0.100000,-0.100000)" stroke="none">
-              <path d="M1613 3284 c-65 -23 -122 -82 -208 -212 l-80 -120 -170 -4 c-151 -3
-                      -176 -6 -220 -26 -63 -29 -119 -83 -153 -147 l-27 -50 0 -620 c0 -609 0 -621
-                      21 -666 31 -67 78 -114 146 -149 l61 -30 1047 0 1047 0 61 30 c68 35 115 82
-                      146 149 21 45 21 57 21 666 l0 620 -27 50 c-34 64 -90 118 -153 147 -44 20
-                      -69 23 -220 26 l-170 4 -80 120 c-88 133 -143 189 -212 212 -66 23 -766 22
-                      -830 0z m571 -419 c154 -33 324 -149 417 -286 117 -172 149 -401 84 -596 -39
-                      -116 -79 -179 -174 -273 -68 -68 -104 -95 -172 -128 -257 -127 -563 -85 -770
-                      106 -162 150 -241 345 -226 557 21 293 237 550 522 619 79 19 232 19 319 1z
-                      m815 -179 c28 -15 51 -53 51 -86 0 -10 -12 -32 -26 -49 -25 -31 -27 -31 -120
-                      -31 -87 0 -97 2 -119 25 -46 45 -27 125 35 148 32 12 152 7 179 -7z"/>
-                <path d="M1954 2570 c-111 -22 -215 -103 -266 -208 -44 -89 -51 -206 -18 -295
-                        27 -72 71 -131 135 -179 69 -52 133 -72 230 -72 69 0 90 5 147 31 89 42 151
-                        101 191 182 30 61 32 72 32 171 0 96 -3 110 -28 158 -86 164 -250 246 -423
-                        212z"/>
-              </g>
-          </svg>
-        </button>
-        <button id="returnButton">Return to Webcam</button>
+        <button id="capture"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path id="buttonpath" d="M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/></svg></button>
       </div>
     </div>
     <div class="result-information">
