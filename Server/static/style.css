@@ -200,6 +200,13 @@ nav{
     font-size: 30px;
     font-weight: 700;
 }
+#inference-speed{
+    position:absolute;
+    bottom: 10px;
+    left: 75%;
+    transform: translateX(-50%);
+    font-size: 15px;
+}
 @-moz-keyframes spin {
     from { -moz-transform: rotate(0deg); }
     to { -moz-transform: rotate(360deg); }

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import base64
 print("Importing AI Packages...")
 print("Importing YOLO...")
@@ -14,12 +14,6 @@ model = YOLO("Server\\best.pt")
 print("Model loaded.")
 
 app = Flask(__name__) # Create an Instance
-names = {
-  0: 'Crinkly Plastic', 
-  1: 'Deposit_Recycle', 
-  2: 'Green_bin', 
-  3: 'Metallic Wrapping', 
-  4: 'Recycle'}
 @app.route('/')
 def homepage():
   return render_template('index.html')
@@ -40,14 +34,21 @@ def processimage():
   results = model.predict(image)
   for r in results:
     boxes = r.boxes
+    speed = r.speed['inference']
     for box in boxes:
-      b = box.xyxy[0]# get box coordinates in (top, left, bottom, right) format
-      b = b.tolist()
-      print("Printing the b: "+ str(b))
-      c = box.cls
-      c= c.tolist()
-      print("Printing the c: "+ names[int(c[0])])
-  return "Success", 200
+      boxbounds = box .xyxy[0] # get box coordinates in (top, left, bottom, right) format
+      boxbounds = boxbounds.tolist()
+      classlist = box.cls
+      classlist = classlist.tolist()
+      confidencelist = box.conf.tolist()
+  jsonresults = {
+    "nameid" : int(classlist[0]),
+    "boundingbox" : str(boxbounds),
+    "confidence" : confidencelist[0],
+    "speed" : speed
+  }
+  print(jsonresults)
+  return jsonify(jsonresults)
 
 @app.errorhandler(500)
 def fivehundrederror(error):
