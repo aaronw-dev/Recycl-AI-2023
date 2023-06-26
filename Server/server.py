@@ -34,7 +34,7 @@ def processimage():
   filecontents = str.encode(filecontents)
   with open("output.png", "wb") as file:
     file.write(base64.decodebytes(filecontents))
-
+    
   image = Image.open("output.png").convert('RGB')
   image = np.asarray(image)
   results = model.predict(image)
@@ -46,7 +46,7 @@ def processimage():
       print("Printing the b: "+ str(b))
       c = box.cls
       c= c.tolist()
-      
+      print("Printing the c: "+ names[int(c[0])])
   return "Success", 200
 
 @app.errorhandler(500)
