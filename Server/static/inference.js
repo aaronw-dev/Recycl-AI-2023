@@ -1,14 +1,15 @@
 let imageToDetect = null;
 
 const videoContainer = document.getElementById('videoContainer');
-const imageContainer = document.getElementById('imageContainer');
-const capturedImage = document.getElementById('capturedImage');
+const serverImage = document.getElementById("serverimage");
 const captureButton = document.getElementById('capture');
 const returnButton = document.getElementById('returnButton');
 const resultcontainer = document.getElementById('result-container')
-resultcontainer.hidden = true;
 const resultplaceholder = document.getElementById('result-placeholder')
+
+resultcontainer.hidden = true;
 resultplaceholder.hidden = false;
+serverImage.hidden = true;
 
 const detectedobject = document.getElementById("detectedobject")
 const itemconfidence = document.getElementById("item-confidence")
@@ -62,6 +63,10 @@ captureButton.addEventListener('click', () => {
   const videoElement = document.getElementById('video');
   captureButton.classList.toggle("spinning")
   isInFreezeFrame = !isInFreezeFrame
+
+  videoElement.hidden = false
+  serverImage.hidden = true
+
   if(isInFreezeFrame){
     document.getElementById("buttonpath").setAttribute('d', rotatingarrows)
     const canvas = document.createElement('canvas');
@@ -84,6 +89,8 @@ captureButton.addEventListener('click', () => {
   }
 });
 function loadedJSON(json){
+  const videoElement = document.getElementById('video');
+
   resultplaceholder.hidden = true;
   resultcontainer.hidden = false;
   console.log(JSON.stringify(json))
@@ -93,9 +100,16 @@ function loadedJSON(json){
   itemconfidence.innerHTML = ((json["confidence"].toFixed(2)) * 100) + "%";
   itemdetails.innerHTML = paragraphs[json["nameid"]]
   inferencespeed.innerHTML = (json["speed"] / 1000).toFixed(2) + " seconds to process"
+
+  videoElement.hidden = true
+  
+  serverImage.hidden = false;
+  console.log(serverImage)
+  serverImage.setAttribute("src", "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRPMKnq00NF_T7RusUNeLrSazRZM0S5O8_AOcw2iBTmYTxd3Q7uXf0sW41odpAKqSblKDMUMHGb8nZRo9g")
+  //serverImage.src = "http://127.0.0.1:3000/static/output.png?t=" + new Date().getTime();
   isInFreezeFrame = !isInFreezeFrame
   document.getElementById("buttonpath").setAttribute('d', camera);
   // Clear the captured image and return to the live webcam feed
   imageToDetect = null;
-  capturedImage.src = '';
+  serverImage.src = '';
 }

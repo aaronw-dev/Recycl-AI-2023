@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import base64
+import shutil
 print("Importing AI Packages...")
 print("Importing YOLO...")
 from ultralytics import YOLO
@@ -31,7 +32,8 @@ def processimage():
     
   image = Image.open("output.png").convert('RGB')
   image = np.asarray(image)
-  results = model.predict(image)
+  image = image[...,::-1]
+  results = model.predict(image, save=True)
   for r in results:
     boxes = r.boxes
     speed = r.speed['inference']
@@ -47,6 +49,8 @@ def processimage():
     "confidence" : confidencelist[0],
     "speed" : speed
   }
+  shutil.move("runs\detect\predict\image0.jpg", "Server/static/output.png")
+  shutil.rmtree("runs")
   print(jsonresults)
   return jsonify(jsonresults)
 
