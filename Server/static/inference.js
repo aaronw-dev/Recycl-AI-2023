@@ -5,6 +5,10 @@ const imageContainer = document.getElementById('imageContainer');
 const capturedImage = document.getElementById('capturedImage');
 const captureButton = document.getElementById('capture');
 const returnButton = document.getElementById('returnButton');
+const resultcontainer = document.getElementById('result-container')
+resultcontainer.hidden = true;
+const resultplaceholder = document.getElementById('result-placeholder')
+resultplaceholder.hidden = false;
 
 const detectedobject = document.getElementById("detectedobject")
 const itemconfidence = document.getElementById("item-confidence")
@@ -80,6 +84,8 @@ captureButton.addEventListener('click', () => {
   }
 });
 function loadedJSON(json){
+  resultplaceholder.hidden = true;
+  resultcontainer.hidden = false;
   console.log(JSON.stringify(json))
   captureButton.classList.toggle("spinning")
 
