@@ -7,7 +7,7 @@ const resultcontainer = document.getElementById('result-container')
 const resultplaceholder = document.getElementById('result-placeholder')
 const serverImage = document.getElementById('serverimage')
 const noresult = document.getElementById('noresult')
-
+const cameraselect = document.getElementById('camera-select')
 resultcontainer.hidden = true;
 resultplaceholder.hidden = false;
 serverImage.hidden = true;
@@ -41,13 +41,27 @@ paragraphs = {
   4: 'Non-returnable plastic is typically collected in curbside recycling bins. The plastic is then cleaned and ground into small pieces, melted down and formed into pellets. Recycling non-refundable plastic reduces the amount of new plastic that is made, and helps to conserve resources.'
 }
 
-// Get access to the user's webcam with limited resolution
-navigator.mediaDevices.getUserMedia({ 
-  video: {
-    width: { ideal: maxVideoWidth },
-    height: { ideal: maxVideoHeight }
-  }
+videodevices = []
+navigator.mediaDevices.enumerateDevices().then((devices) => {
+  devices.forEach((device) => {
+    if(device.kind === "videoinput"){
+      option = document.createElement("option")
+      option.value = device.deviceId
+      option.innerHTML = device.label
+      cameraselect.appendChild(option)
+    }
+  });
 })
+
+// Get access to the user's webcam with limited resolution
+function startCameraStream(cameraid){
+  navigator.mediaDevices.getUserMedia({ 
+    video: {
+      width: { ideal: maxVideoWidth },
+      height: { ideal: maxVideoHeight },
+      deviceId: cameraid ? {exact: cameraid} : undefined
+    }
+  })
   .then((stream) => {
     const videoElement = document.getElementById('video');
     document.getElementById("loading-text").hidden = true;
@@ -59,6 +73,13 @@ navigator.mediaDevices.getUserMedia({
   .catch((error) => {
     console.error('Error accessing webcam:', error);
   });
+}
+startCameraStream()
+
+function changedCameraStream(){
+  targetcamera = cameraselect.value
+  startCameraStream(targetcamera)
+}
 
 captureButton.addEventListener('click', () => {
   const videoElement = document.getElementById('video');

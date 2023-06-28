@@ -118,7 +118,7 @@ nav{
 }
 .camera-preview .button-container{
     position: absolute;
-    bottom: 10px;
+    bottom: 30px;
     left: 25%;
     transform: translateX(-100%);
     z-index: 1000;
@@ -253,6 +253,28 @@ nav{
     left: 75%;
     transform: translateX(-50%);
     font-size: 15px;
+}
+#camera-select{
+    position: absolute;
+    bottom:6px;
+    padding: 3px;
+    left: calc(25% - 25px);
+    transform: translateX(-50%);
+    border-radius: 10px;
+    border-style: none;
+    background:#beffd5;
+    font-family: 'Ubuntu', sans-serif;
+}
+*:focus {
+    outline: none;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
 }
 @-moz-keyframes spin {
     from { -moz-transform: rotate(0deg); }
