@@ -17,4 +17,4 @@ We built Recycl.ai because we were inspired by our recycling club at school, whi
 Recycl.ai is powered by Flask and Ultralytics, and it runs the latest training algorithm for its computer vision model. We created our own dataset of 4.6K images trained on different classes and annotated using Roboflow. The training was done on Google Colab. Other than Roboflow and YOLOv8, Recycl.ai uses a Flask server to run the Python code for image inference and detection.
 
 ## Into the future
-We plan to turn this small hackathon project into a startup at some point in time, but only time will tell. Thank you for yor consideration in judging. 
+We plan to turn this small hackathon project into a startup at some point in time, but only time will tell. Thank you for your consideration in judging. 
