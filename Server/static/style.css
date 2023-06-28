@@ -157,7 +157,7 @@ nav{
     z-index: 100;
     bottom: 0;
     border-radius: 50px;
-    width: 50%;
+    height: 100%;
     aspect-ratio: 1 / 1;
     transition: 0.5s ease-out;
 }
@@ -167,6 +167,12 @@ nav{
     width: 0%;
     height: 0%;
     border-radius: 0 30px 0 50px;
+}
+#serverimage:hover{
+    border-radius: 50px;
+    width: calc(50% - 45px);
+    height: 100%;
+    aspect-ratio: 1 / 1;
 }
 .inference-container > div{
     flex-basis: 50%;
@@ -231,6 +237,15 @@ nav{
     transform: translate(-75%, -50%);
     font-size: 30px;
     font-weight: 700;
+}
+.noresult-text{
+    position: absolute;
+    top:50%;
+    right: 25%;
+    transform: translate(50%, -50%);
+    font-size: 60px;
+    font-weight: 700;
+    width: 40%;
 }
 #inference-speed{
     position:absolute;

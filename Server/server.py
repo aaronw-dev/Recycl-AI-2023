@@ -37,17 +37,25 @@ def processimage():
   for r in results:
     boxes = r.boxes
     speed = r.speed['inference']
+    confidencelist = []
+    classlist = []
     for box in boxes:
-      boxbounds = box .xyxy[0] # get box coordinates in (top, left, bottom, right) format
-      boxbounds = boxbounds.tolist()
-      classlist = box.cls
-      classlist = classlist.tolist()
-      confidencelist = box.conf.tolist()
+      boxclass = box.cls.tolist()[0]
+      classlist.append(boxclass)
+      confidencelist.append(box.conf.tolist()[0])
+  print(confidencelist)
+  confidencelist.sort(reverse=True)
+  print(confidencelist)
+  try:
+    didfail = classlist[0] is None
+  except Exception as e:
+    didfail = True
+  print(didfail)
   jsonresults = {
-    "nameid" : int(classlist[0]),
-    "boundingbox" : str(boxbounds),
-    "confidence" : confidencelist[0],
-    "speed" : speed
+    "nameid" : int(classlist[0]) if not didfail else 0,
+    "confidence" : confidencelist[0] if not didfail else 0,
+    "speed" : speed,
+    "failed" : didfail
   }
   shutil.move("runs\detect\predict\image0.jpg", "Server/static/output.png")
   shutil.rmtree("runs")

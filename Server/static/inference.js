@@ -6,11 +6,12 @@ const returnButton = document.getElementById('returnButton');
 const resultcontainer = document.getElementById('result-container')
 const resultplaceholder = document.getElementById('result-placeholder')
 const serverImage = document.getElementById('serverimage')
+const noresult = document.getElementById('noresult')
 
 resultcontainer.hidden = true;
 resultplaceholder.hidden = false;
 serverImage.hidden = true;
-
+noresult.hidden = true;
 const detectedobject = document.getElementById("detectedobject")
 const itemconfidence = document.getElementById("item-confidence")
 const itemdetails = document.getElementById("item-details")
@@ -33,11 +34,11 @@ names = {
 }
 
 paragraphs = {
-  0: 'Crinkly plastic', 
+  0: 'Next, the plastic is ground up into small pieces and then melted down. Once the plastic is melted, it can be formed into pellets or sheets, which can then be used to create new products. The recycling process for crinkly plastic helps to reduce the amount of plastic that ends up in landfills', 
   1: 'Returnable recycling can be returned to your local recycling facility to get your environment deposit back. This is usually something around 10 cents.', 
   2: 'Compost goes in a green bin or a compost bin that you may have in your house. Fun fact: 40% of what we throw into the garbage is actually compostable.', 
-  3: 'Metallic Wrapping', 
-  4: 'Non-Returnable Recycling'
+  3: 'Flexible metallic wrapping, like chip bags, is typically made from a combination of plastic and metal. When this type of packaging is recycled, the different materials are separated and processed separately. Overall, recycling flexible metallic wrapping helps to conserve resources and reduce waste.', 
+  4: 'Non-returnable plastic is typically collected in curbside recycling bins. The plastic is then cleaned and ground into small pieces, melted down and formed into pellets. Recycling non-refundable plastic reduces the amount of new plastic that is made, and helps to conserve resources.'
 }
 
 // Get access to the user's webcam with limited resolution
@@ -49,7 +50,7 @@ navigator.mediaDevices.getUserMedia({
 })
   .then((stream) => {
     const videoElement = document.getElementById('video');
-    document.getElementById("loading-text").style.display = "none"
+    document.getElementById("loading-text").hidden = true;
     videoElement.srcObject = stream;
     videoElement.onloadedmetadata = () => {
       videoElement.play();
@@ -63,9 +64,6 @@ captureButton.addEventListener('click', () => {
   const videoElement = document.getElementById('video');
   captureButton.classList.toggle("spinning")
   isInFreezeFrame = !isInFreezeFrame
-  
-  serverImage.hidden = true
-
   if(isInFreezeFrame){
     document.getElementById("buttonpath").setAttribute('d', rotatingarrows)
     const canvas = document.createElement('canvas');
@@ -88,23 +86,30 @@ captureButton.addEventListener('click', () => {
   }
 });
 function loadedJSON(json){
-  const videoElement = document.getElementById('video');
-
   resultplaceholder.hidden = true;
-  resultcontainer.hidden = false;
-  console.log(JSON.stringify(json))
+  if(json["failed"]){
+    serverImage.hidden = true
+    noresult.hidden = false;
+    resultcontainer.hidden = true;
+  } else{
+    noresult.hidden = true;
+    resultcontainer.hidden = false;
+    console.log(JSON.stringify(json))
+
+    detectedobject.innerHTML = names[json["nameid"]]
+    itemconfidence.innerHTML = ((json["confidence"].toFixed(2)) * 100) + "%";
+    itemdetails.innerHTML = paragraphs[json["nameid"]]
+    inferencespeed.innerHTML = (json["speed"] / 1000).toFixed(2) + " seconds to process"
+  }
   captureButton.classList.toggle("spinning")
-
-  detectedobject.innerHTML = names[json["nameid"]]
-  itemconfidence.innerHTML = ((json["confidence"].toFixed(2)) * 100) + "%";
-  itemdetails.innerHTML = paragraphs[json["nameid"]]
-  inferencespeed.innerHTML = (json["speed"] / 1000).toFixed(2) + " seconds to process"
-
   serverImage.hidden = false;
   // TESTING : serverImage.src = "https://raw.githubusercontent.com/aaronw-dev/Recycl-AI-2023/main/Server/static/output.png"
   serverImage.src = "http://127.0.0.1:3000/static/output.png?t=" + new Date().getTime();
+  serverImage.classList.remove("closed")
   isInFreezeFrame = !isInFreezeFrame
   document.getElementById("buttonpath").setAttribute('d', camera);
-  // Clear the captured image and return to the live webcam feed
-  imageToDetect = null;
+  setTimeout(function(){
+    console.log("minimizing thingy")
+    serverImage.classList.add("closed")
+  }, 2000)
 }
