@@ -1,5 +1,10 @@
 # Recycl.ai
 
+## DEPENDENCIES
+- Ultralytics - `pip install ultralytics`
+- Numpy - `pip install numpy`
+- Pillow - `pip install pillow`
+- Flask - `pip install flask`
 ## How to run
 Download or clone the repository. Under the `Server` directory, there is a file called `server.py` as well as a PyTorch model file `best.pt`. Run `server.py` and access your `localhost` domain. Compute times may vary depending on our computer's specs but they should be in the 10-20 second range for the first inference and 3-10 for the ones after.
 
