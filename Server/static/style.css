@@ -152,6 +152,22 @@ nav{
     background-position: center;
     background-image: url(https://unblast.com/wp-content/uploads/2020/03/Soda-Can-in-Hand-Mockup-2.jpg);
 }
+#serverimage{
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    border-radius: 50px;
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    transition: 0.5s ease-out;
+}
+#serverimage.closed{
+    min-width: 150px;
+    min-height: 150px;
+    width: 0%;
+    height: 0%;
+    border-radius: 0 30px 0 50px;
+}
 .inference-container > div{
     flex-basis: 50%;
     aspect-ratio: 1;

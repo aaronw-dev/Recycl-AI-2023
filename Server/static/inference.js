@@ -1,11 +1,11 @@
 let imageToDetect = null;
 
 const videoContainer = document.getElementById('videoContainer');
-const serverImage = document.getElementById("serverimage");
 const captureButton = document.getElementById('capture');
 const returnButton = document.getElementById('returnButton');
 const resultcontainer = document.getElementById('result-container')
 const resultplaceholder = document.getElementById('result-placeholder')
+const serverImage = document.getElementById('serverimage')
 
 resultcontainer.hidden = true;
 resultplaceholder.hidden = false;
@@ -63,8 +63,7 @@ captureButton.addEventListener('click', () => {
   const videoElement = document.getElementById('video');
   captureButton.classList.toggle("spinning")
   isInFreezeFrame = !isInFreezeFrame
-
-  videoElement.hidden = false
+  
   serverImage.hidden = true
 
   if(isInFreezeFrame){
@@ -101,15 +100,11 @@ function loadedJSON(json){
   itemdetails.innerHTML = paragraphs[json["nameid"]]
   inferencespeed.innerHTML = (json["speed"] / 1000).toFixed(2) + " seconds to process"
 
-  videoElement.hidden = true
-  
   serverImage.hidden = false;
-  console.log(serverImage)
-  serverImage.setAttribute("src", "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRPMKnq00NF_T7RusUNeLrSazRZM0S5O8_AOcw2iBTmYTxd3Q7uXf0sW41odpAKqSblKDMUMHGb8nZRo9g")
-  //serverImage.src = "http://127.0.0.1:3000/static/output.png?t=" + new Date().getTime();
+  // TESTING : serverImage.src = "https://raw.githubusercontent.com/aaronw-dev/Recycl-AI-2023/main/Server/static/output.png"
+  serverImage.src = "http://127.0.0.1:3000/static/output.png?t=" + new Date().getTime();
   isInFreezeFrame = !isInFreezeFrame
   document.getElementById("buttonpath").setAttribute('d', camera);
   // Clear the captured image and return to the live webcam feed
   imageToDetect = null;
-  serverImage.src = '';
 }
