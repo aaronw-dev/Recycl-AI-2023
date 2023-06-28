@@ -3,7 +3,7 @@ import base64
 import shutil
 print("Importing AI Packages...")
 print("Importing YOLO...")
-#from ultralytics import YOLO
+from ultralytics import YOLO
 print("YOLO imported. Importing numpy...")
 import numpy as np
 print("numpy imported. Importing PIL...")
@@ -11,7 +11,7 @@ from PIL import Image
 print("PIL imported.")
 
 print("Loading model...")
-#model = YOLO("Server\\best.pt")
+model = YOLO("Server\\best.pt")
 print("Model loaded.")
 
 app = Flask(__name__) # Create an Instance
@@ -22,7 +22,7 @@ def homepage():
 @app.route('/inference')
 def inferencepage():
   return render_template('inference.html')
-'''
+
 @app.route('/processimage', methods=["GET","POST"])
 def processimage():
   filecontents = request.json["file"][22:]
@@ -61,7 +61,7 @@ def processimage():
   shutil.rmtree("runs")
   print(jsonresults)
   return jsonify(jsonresults)
-'''
+
 @app.errorhandler(500)
 def fivehundrederror(error):
   return render_template('error_500.html')
