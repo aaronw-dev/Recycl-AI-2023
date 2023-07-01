@@ -62,6 +62,11 @@ def processimage():
   print(jsonresults)
   return jsonify(jsonresults)
 
+@app.route("/500")
+def fakefivehundo():
+  print(1 + "asdasd")
+  return "how in the hell does this still work"
+
 @app.errorhandler(500)
 def fivehundrederror(error):
   return render_template('error_500.html')

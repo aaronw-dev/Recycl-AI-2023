@@ -230,6 +230,10 @@ nav{
     font-weight: 700;
     text-align: center;
 }
+.error-container img{
+    width: 40%;
+    margin-bottom: 30px;
+}
 .loading-text{
     position: absolute;
     top:50%;
